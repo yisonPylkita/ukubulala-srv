@@ -20,7 +20,9 @@ jobs:
         with:
             toolchain: nightly
             override: true
-            components: rustfmt, clippy
+            prifile: minimal
+# TODO: add Clippy and rustfmt to build'n'validation process
+#            components: rustfmt, clippy 
       - name: Run cargo check
         uses: actions-rs/cargo@v1
         with:
