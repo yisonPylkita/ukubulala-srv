@@ -1,0 +1,27 @@
+--_Your_SQL_goes_here
+CREATE TABLE homicides (
+    Record_ID INTEGER PRIMARY KEY,
+    Agency_Code VARCHAR(255),
+    Agency_Name VARCHAR(255),
+    Agency_Type VARCHAR(255),
+    City VARCHAR(255),
+    State VARCHAR(255),
+    Year VARCHAR(255),
+    Month VARCHAR(255),
+    Incident VARCHAR(255),
+    Crime_Type VARCHAR(255),
+    Crime_Solved VARCHAR(255),
+    Victim_Sex VARCHAR(255),
+    Victim_Age VARCHAR(255),
+    Victim_Race VARCHAR(255),
+    Victim_Ethnicity VARCHAR(255),
+    Perpetrator_Sex VARCHAR(255),
+    Perpetrator_Age VARCHAR(255),
+    Perpetrator_Race VARCHAR(255),
+    Perpetrator_Ethnicity VARCHAR(255),
+    Relationship VARCHAR(255),
+    Weapon VARCHAR(255),
+    Victim_Count VARCHAR(255),
+    Perpetrator_Count VARCHAR(255),
+    Record_Source VARCHAR(255)
+);

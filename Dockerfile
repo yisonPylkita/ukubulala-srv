@@ -1,8 +1,9 @@
-FROM rust:1.47
+
+FROM rustlang/rust:nightly
 
 WORKDIR /usr/src/ukubulala-srv
 COPY . .
 
 RUN cargo install --path .
 
-CMD ["ukubulala-srv"]
+CMD ["show_posts"]
