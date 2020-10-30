@@ -1,29 +1,7 @@
-// #![feature(proc_macro_hygiene, decl_macro)]
+#![feature(proc_macro_hygiene, decl_macro)]
 
-// #[macro_use]
-// extern crate rocket;
-
-// #[get("/")]
-// fn main_page() -> &'static str {
-//     "Main page"
-// }
-
-// /get_killers?skin_color=black
-// #[get("/get_killers?<skin_color>")]
-// fn get_killers(skin_color: Option<String>) -> String {
-//     skin_color
-//         .map(|skin_color| format!("There were a few {} killers", skin_color))
-//         .unwrap_or_else(|| "No skin color provided".into())
-// }
-
-// /get_victims?skin_color=white&page=1
-// #[get("/get_victims?<skin_color>")]
-// fn get_victims(skin_color: Option<String>) -> String {
-//     skin_color
-//         .map(|skin_color| format!("There were a few {} victims", skin_color))
-//         .unwrap_or_else(|| "No skin color provided".into())
-// }
-
+#[macro_use]
+extern crate rocket;
 
 extern crate ukubulala_srv;
 extern crate diesel;
@@ -34,6 +12,27 @@ use self::models::*;
 use self::diesel::prelude::*;
 use dotenv::dotenv;
 use std::env;
+
+#[get("/")]
+fn main_page() -> &'static str {
+    "Main page"
+}
+
+// /get_killers?skin_color=black
+#[get("/get_killers?<skin_color>")]
+fn get_killers(skin_color: Option<String>) -> String {
+    skin_color
+        .map(|skin_color| format!("There were a few {} killers", skin_color))
+        .unwrap_or_else(|| "No skin color provided".into())
+}
+
+// /get_victims?skin_color=white&page=1
+#[get("/get_victims?<skin_color>")]
+fn get_victims(skin_color: Option<String>) -> String {
+    skin_color
+        .map(|skin_color| format!("There were a few {} victims", skin_color))
+        .unwrap_or_else(|| "No skin color provided".into())
+}
 
 fn main() {
     use ukubulala_srv::schema::homicides::dsl::*;
@@ -64,10 +63,8 @@ fn main() {
         println!("----------\n");
         println!("{}", homicide.weapon.unwrap());
     }
-}
 
-// fn main() {
-//     rocket::ignite()
-//         .mount("/", routes![main_page, get_killers, get_victims])
-//         .launch();
-// }
+    rocket::ignite()
+    .mount("/", routes![main_page, get_killers, get_victims])
+    .launch();
+}
